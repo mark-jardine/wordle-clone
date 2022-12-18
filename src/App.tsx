@@ -1,10 +1,9 @@
 import './App.css';
-import * as React from 'react';
-import LetterBox from './Components/LetterBox';
+import GameBoard from './Components/GameBoard';
 function App() {
   return (
     <div>
-      <LetterBox inputCharacter={"a"}/>
+      <GameBoard/>
     </div>
   );
 }
