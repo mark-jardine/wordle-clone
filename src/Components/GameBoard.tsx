@@ -1,6 +1,4 @@
-import { ReactNode, useEffect, useState } from "react";
-import Tile from "./Tile";
-import TileRow from "./TileRow";
+import { useEffect, useState } from "react";
 
 type GameBoardProps = {
     tileRows : JSX.Element[] 
@@ -18,9 +16,7 @@ const GameBoard = ({tileRows}: GameBoardProps) =>{
 
     return ( 
         <div id="game-board" onLoad={loadRows}>
-            <TileRow tileArray={[
-                <Tile inputCharacter="" />
-            ]}/>
+            {tileRows}
         </div>    
      );
 }
