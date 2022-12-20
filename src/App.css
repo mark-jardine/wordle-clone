@@ -1,8 +1,28 @@
 #root{
   background-color: #121213;
   color: white;
+  height: 100vh;
 }
 
 #tile{
   margin: 20px;
+  border: white;
+  min-height: 40px;
+  min-width: 40px;
+}
+
+#tile-row{
+  margin: 20px;
+  border: white;
+  min-height: 40px;
+  min-width: 40px;
+}
+
+#game-board{
+  margin: 20px;
+  border: white;
+  border-color: black;
+  border-style: solid;
+  min-height: 40px;
+  min-width: 40px;
 }

@@ -1,24 +1,26 @@
-import { useState } from "react";
+import { ReactNode, useEffect, useState } from "react";
+import Tile from "./Tile";
 import TileRow from "./TileRow";
 
-function GameBoard () {
-    const [tileRows, setTileRows] = useState<typeof TileRow[]>([]);
+type GameBoardProps = {
+    tileRows : JSX.Element[] 
+};
+
+const GameBoard = ({tileRows}: GameBoardProps) =>{
+    const [rows, setRows] = useState();
+ 
+    useEffect(()=>{
+
+    }, [])
 
     const loadRows = () => {
-        setTileRows(
-            [
-
-            ]
-        )
     }
 
     return ( 
-        <div onLoad={loadRows}>
-                <TileRow tileArray={["a", "b", "c", "d", "e"]}/>
-                <TileRow tileArray={["a", "b", "c", "d", "e"]}/>
-                <TileRow tileArray={["a", "b", "c", "d", "e"]}/>
-                <TileRow tileArray={["a", "b", "c", "d", "e"]}/>
-                <TileRow tileArray={["a", "b", "c", "d", "e"]}/>
+        <div id="game-board" onLoad={loadRows}>
+            <TileRow tileArray={[
+                <Tile inputCharacter="" />
+            ]}/>
         </div>    
      );
 }

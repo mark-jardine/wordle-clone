@@ -1,58 +1,29 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, ReactNode } from "react";
+import { Z_ASCII } from "zlib";
+import Tile from './Tile';
 
-interface TileRowProps{
-    tileArray: string[]
+type TileRowProps = {
+    tileArray?: JSX.Element[]
 };
 
-function TileRow({tileArray}: TileRowProps) {
-    const emptyRow: string[] = ["", "", "", "", ""];
-    const [tiles,setTiles] = useState<string[]>(emptyRow);
+const TileRow = ({tileArray}: TileRowProps) => {
+    const [tiles,setTiles] = useState<JSX.Element[]>();
+    const [selctedRow, setSelectedRow] = useState(false);
     
 
     useEffect(() => {
-        setTiles(tileArray);
+        setTiles([        
+        <Tile inputCharacter='' />,
+        <Tile inputCharacter='' />,
+        <Tile inputCharacter='' />,
+        <Tile inputCharacter='' />,
+        <Tile inputCharacter='' />
+        ]);
     }, [tileArray])
 
-    const loadTileArray = () => {
-        let tiles = new Array<string>(5);
-        if(!tiles){
-            //Set tiles as empty 
-            tiles = emptyRow;
-        }
-        else{
-            tiles = tileArray;
-        }
-
-        setTiles(tileArray)
-    }
-
-    const generateTiles = () => {
-        let tilesJsx;
-
-        if(tiles === emptyRow){
-            tilesJsx = (
-                tiles.map((tile)=>{
-                    return (
-                        <span id="tile"></span>
-                    )
-                })
-            )
-        }
-        else{
-            tilesJsx = (
-                tiles.map((tile)=>{
-                    return (
-                        <span id="tile">{tile}</span>
-                    )
-                })
-            )
-        }
-        return tilesJsx;
-    }
-
     return ( 
-    <div>
-        {generateTiles()}
+    <div id="tile-row">
+        {tiles}
     </div>
      );
 }
