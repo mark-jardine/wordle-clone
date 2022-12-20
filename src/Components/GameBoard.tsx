@@ -15,7 +15,7 @@ const GameBoard = ({tileRows}: GameBoardProps) =>{
     }
 
     return ( 
-        <div id="game-board" onLoad={loadRows}>
+        <div id="game-board">
             {tileRows}
         </div>    
      );

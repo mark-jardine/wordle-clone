@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { useState, useEffect } from 'react';
 
 type TileProps = {
@@ -16,9 +15,9 @@ const Tile = ( {inputCharacter}: TileProps ) => {
     }, [inputCharacter])
 
     return (
-    <div id="tile">
-        [character]
-    </div>
+    <span id="tile">
+        {character}
+    </span>
     );
 }
  

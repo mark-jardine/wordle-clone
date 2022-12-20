@@ -10,7 +10,7 @@ function App() {
         <TileRow tileArray={[]}/>,
         <TileRow tileArray={[]}/>,
         <TileRow tileArray={[]}/>
-      ]}/>
+      ]} />
     </div>
   );
 }
