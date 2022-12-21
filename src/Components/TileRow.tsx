@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import Tile from './Tile';
 
 type TileRowProps = {
-    tileArray?: JSX.Element[]
+    tileArray: JSX.Element[]
 };
 
 const TileRow = ({tileArray}: TileRowProps) => {
