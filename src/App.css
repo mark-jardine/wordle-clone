@@ -24,8 +24,12 @@
 #game-board{
   padding-top: 20px;
   padding-bottom: 10px;
-
   min-height: 40px;
   min-width: 40px;
   text-align: center;
+}
+
+#tile.selected{
+  border: solid;
+  border-color: red;
 }

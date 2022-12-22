@@ -1,23 +1,24 @@
 import { useEffect, useState } from "react";
+import TileRow from "./TileRow";
 
-type GameBoardProps = {
-    tileRows : JSX.Element[] 
-};
-
-const GameBoard = ({tileRows}: GameBoardProps) =>{
-    const [rows, setRows] = useState();
+const GameBoard = () =>{
+    const [rows, setRows] = useState(
+        [
+            <TileRow tileArray={[]} selectedRow={true}/>,
+            <TileRow tileArray={[]} selectedRow={false}/>,
+            <TileRow tileArray={[]} selectedRow={false}/>,
+            <TileRow tileArray={[]} selectedRow={false}/>,
+            <TileRow tileArray={[]} selectedRow={false}/>
+        ]
+    );
  
     useEffect(()=>{
-
-    }, [])
-
-    const loadRows = () => {
-    }
+    },[rows])
 
     return ( 
         <div id="game-board">
-            {tileRows}
-        </div>    
+            {rows}
+        </div>
      );
 }
  

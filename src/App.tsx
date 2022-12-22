@@ -3,14 +3,8 @@ import GameBoard from './Components/GameBoard';
 import TileRow from './Components/TileRow';
 function App() {
   return (
-    <div>
-      <GameBoard tileRows={[
-        <TileRow tileArray={[]}/>,
-        <TileRow tileArray={[]}/>,
-        <TileRow tileArray={[]}/>,
-        <TileRow tileArray={[]}/>,
-        <TileRow tileArray={[]}/>
-      ]} />
+    <div id='root'>
+      <GameBoard />
     </div>
   );
 }

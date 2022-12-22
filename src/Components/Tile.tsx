@@ -2,20 +2,19 @@ import { useState, useEffect } from 'react';
 
 type TileProps = {
     inputCharacter: string
+    selectedTile: boolean
 };
 
-const Tile = ( {inputCharacter}: TileProps ) => {
+const Tile = ( {inputCharacter, selectedTile}: TileProps ) => {
     //The character to be displayed
     const [character, setCharacter] = useState<string | null>(null);
-    //Is the current tile in operation
-    const [selectedTile, setSelectedTile] = useState(false);
 
     useEffect(() => {
         setCharacter(inputCharacter);
     }, [inputCharacter])
 
     return (
-    <span id="tile">
+    <span id="tile" className={selectedTile? "selected":""}>
         {character}
     </span>
     );
