@@ -4,18 +4,18 @@ import TileRow from "./TileRow";
 const GameBoard = () =>{
     const [rows, setRows] = useState(
         [
-            <TileRow tileArray={[]} selectedRow={true}/>,
-            <TileRow tileArray={[]} selectedRow={false}/>,
-            <TileRow tileArray={[]} selectedRow={false}/>,
-            <TileRow tileArray={[]} selectedRow={false}/>,
-            <TileRow tileArray={[]} selectedRow={false}/>
+            <TileRow key="r0" tileArray={[]} selectedRow={true}/>,
+            <TileRow key="r1" tileArray={[]} selectedRow={false}/>,
+            <TileRow key="r2" tileArray={[]} selectedRow={false}/>,
+            <TileRow key="r3" tileArray={[]} selectedRow={false}/>,
+            <TileRow key="r4" tileArray={[]} selectedRow={false}/>
         ]
     );
  
     useEffect(()=>{
     },[rows])
 
-    return ( 
+    return (
         <div id="game-board">
             {rows}
         </div>

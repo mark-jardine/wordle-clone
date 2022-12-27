@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import Tile from './Tile';
 
 type TileRowProps = {
@@ -7,29 +7,27 @@ type TileRowProps = {
 };
 
 const TileRow = ({tileArray, selectedRow}: TileRowProps) => {
-    const [tiles,setTiles] = useState<JSX.Element[]>(
-        [
-            // Default Row- If this row is selected (the current row being played on by user),
-            //              then set the first tile as selected. 
-            <Tile inputCharacter='' selectedTile={selectedRow} />,
-            <Tile inputCharacter='' selectedTile={false}/>,
-            <Tile inputCharacter='' selectedTile={false}/>,
-            <Tile inputCharacter='' selectedTile={false}/>,
-            <Tile inputCharacter='' selectedTile={false}/>
-        ]
-    ); 
-    
-    // useEffect(() => {
-    //     setTiles([
-    //     <Tile inputCharacter='' selectedTile={false} />,
-    //     <Tile inputCharacter='' selectedTile={false}/>,
-    //     <Tile inputCharacter='' selectedTile={false}/>,
-    //     <Tile inputCharacter='' selectedTile={false}/>,
-    //     <Tile inputCharacter='' selectedTile={false}/>
-    //     ]);
-    // }, [tileArray])
+    const [tiles,setTiles] = useState<JSX.Element[]>([]);
 
-    return ( 
+    useEffect(()=> {
+        console.log(tiles);
+    }, [tiles])
+
+    useEffect(() => {
+        setTiles(
+            [
+                // Default Row- If this row is selected (the current row being played on by user),
+                //              then set the first tile as selected.
+                <Tile key="t0" inputCharacter='' selectedTile={selectedRow} setTiles={setTiles} />,
+                <Tile key="t1" inputCharacter='' selectedTile={false} setTiles={setTiles} />,
+                <Tile key="t2" inputCharacter='' selectedTile={false} setTiles={setTiles} />,
+                <Tile key="t3" inputCharacter='' selectedTile={false} setTiles={setTiles} />,
+                <Tile key="t4" inputCharacter='' selectedTile={false} setTiles={setTiles} />
+            ]
+        )
+    }, [])
+
+    return (
     <div id="tile-row">
         {tiles}
     </div>
