@@ -40,6 +40,7 @@ const Tile = ( {inputCharacter, selectedTile, setTiles}: TileProps ) => {
 
     return (
     <span id="tile" className={selectedTile? "selected":""}>
+        <input style={{"display": "none"}} onInput={e => console.log(e)}></input>
         {character}
     </span>
     );
