@@ -13,17 +13,30 @@ const Tile = ( {inputCharacter, selectedTile, setTiles}: TileProps ) => {
     useEffect(()=> {
         //Allow user to input a character if this tile is currently selected
         if(selectedTile === true) {
-            window.addEventListener('keypress', e => {
+            window.addEventListener('keydown', e => {
                 console.log(e);
                 const key = e.key;
                 //If key is a letter
                 if(key.match("[a-zA-z]")){
                     //Set tile's character to the uppercase version of that key
                     setCharacter(key.toUpperCase());
+                }else if(key === "Backspace"){
+                    //If there is a character
+                        //Set character to empty string
+                    //Else
+                        //Move to previous tile
                 }
             });
         }
     }, [])
+
+    useEffect(() => {
+        if(character){
+            //If final tile in row, stay on tile until ENTER
+            //Else
+                //Move to next tile
+        }
+    }, [character])
 
     return (
     <span id="tile" className={selectedTile? "selected":""}>
