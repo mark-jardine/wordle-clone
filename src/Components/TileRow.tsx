@@ -8,6 +8,7 @@ type TileRowProps = {
 
 const TileRow = ({tileArray, selectedRow}: TileRowProps) => {
     const [tiles,setTiles] = useState<JSX.Element[]>([]);
+    const [selectedTile, setSelectedTile] = useState<JSX.Element>();
 
     useEffect(()=> {
         console.log(tiles);
@@ -24,7 +25,7 @@ const TileRow = ({tileArray, selectedRow}: TileRowProps) => {
                 <Tile key="t3" inputCharacter='' selectedTile={false} setTiles={setTiles} />,
                 <Tile key="t4" inputCharacter='' selectedTile={false} setTiles={setTiles} />
             ]
-        )
+        );
     }, [])
 
     return (

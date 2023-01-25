@@ -16,15 +16,22 @@ const Tile = ( {inputCharacter, selectedTile, setTiles}: TileProps ) => {
             window.addEventListener('keydown', e => {
                 console.log(e);
                 const key = e.key;
-                //If key is a letter
-                if(key.match("[a-zA-z]")){
+                
+                //If key is a single letter
+                if(key.match("\\w") && key.length === 1){
                     //Set tile's character to the uppercase version of that key
                     setCharacter(key.toUpperCase());
-                }else if(key === "Backspace"){
-                    //If there is a character
-                        //Set character to empty string
-                    //Else
-                        //Move to previous tile
+                }
+                //If user pressed backspace
+                else if(key === "Backspace"){
+                    //If there is a character- set to empty string
+                    if(character){
+                        setCharacter("");
+                    }
+                    //Otherwise, move to the previous tile in the selected tilerow
+                    else{
+                        
+                    }
                 }
             });
         }
