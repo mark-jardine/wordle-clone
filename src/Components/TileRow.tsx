@@ -3,30 +3,31 @@ import Tile from './Tile';
 
 type TileRowProps = {
     tileArray: JSX.Element[]
-    selectedRow: boolean
+    selectedRowIndex: number
+    setSelectedRowIndex: React.Dispatch<React.SetStateAction<number>>
+    rowIndex: number
+    setRows: any
 };
 
-const TileRow = ({tileArray, selectedRow}: TileRowProps) => {
-    const [tiles,setTiles] = useState<JSX.Element[]>([]);
-    const [selectedTile, setSelectedTile] = useState<JSX.Element>();
+const TileRow = ({tileArray, selectedRowIndex, setSelectedRowIndex, rowIndex, setRows}: TileRowProps) => {
+    const [tiles, setTiles] = useState<JSX.Element[]>([]);
+    //Tile currently selected by User
+    const [selectedTileIndex, setSelectedTileIndex] = useState<number>(0);
 
     useEffect(()=> {
         console.log(tiles);
     }, [tiles])
 
     useEffect(() => {
-        setTiles(
-            [
-                // Default Row- If this row is selected (the current row being played on by user),
-                //              then set the first tile as selected.
-                <Tile key="t0" inputCharacter='' selectedTile={selectedRow} setTiles={setTiles} />,
-                <Tile key="t1" inputCharacter='' selectedTile={false} setTiles={setTiles} />,
-                <Tile key="t2" inputCharacter='' selectedTile={false} setTiles={setTiles} />,
-                <Tile key="t3" inputCharacter='' selectedTile={false} setTiles={setTiles} />,
-                <Tile key="t4" inputCharacter='' selectedTile={false} setTiles={setTiles} />
-            ]
-        );
-    }, [])
+        let tiles: JSX.Element[] = [];
+        for (let i = 0; i < 5; i++) {
+            tiles.push(<Tile tileIndex={i} inputCharacter={''} selectedTileIndex={selectedTileIndex} setTiles={setTiles}/>)
+        }
+        //By default, the first row is set as selected
+        tiles[0].props.selectedTile = true;
+
+        setTiles(tiles);
+    })
 
     return (
     <div id="tile-row">

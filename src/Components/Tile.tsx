@@ -2,17 +2,18 @@ import { useState, useEffect } from 'react';
 
 type TileProps = {
     inputCharacter: string
-    selectedTile: boolean
+    selectedTileIndex: number
     setTiles: React.Dispatch<React.SetStateAction<JSX.Element[]>>
+    tileIndex: number
 };
 
-const Tile = ( {inputCharacter, selectedTile, setTiles}: TileProps ) => {
+const Tile = ( {inputCharacter, selectedTileIndex, setTiles, tileIndex}: TileProps ) => {
     //The character to be displayed
     const [character, setCharacter] = useState<string>(inputCharacter? inputCharacter: "");
 
     useEffect(()=> {
         //Allow user to input a character if this tile is currently selected
-        if(selectedTile === true) {
+        if(selectedTileIndex === tileIndex) {
             window.addEventListener('keydown', e => {
                 console.log(e);
                 const key = e.key;
@@ -46,7 +47,7 @@ const Tile = ( {inputCharacter, selectedTile, setTiles}: TileProps ) => {
     }, [character])
 
     return (
-    <span id="tile" className={selectedTile? "selected":""}>
+    <span id="tile" className={selectedTileIndex? "selected":""}>
         <input style={{"display": "none"}} onInput={e => console.log(e)}></input>
         {character}
     </span>

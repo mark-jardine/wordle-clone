@@ -2,18 +2,21 @@ import { useEffect, useState } from "react";
 import TileRow from "./TileRow";
 
 const GameBoard = () =>{
-    const [rows, setRows] = useState(
-        [
-            <TileRow key="r0" tileArray={[]} selectedRow={true}/>,
-            <TileRow key="r1" tileArray={[]} selectedRow={false}/>,
-            <TileRow key="r2" tileArray={[]} selectedRow={false}/>,
-            <TileRow key="r3" tileArray={[]} selectedRow={false}/>,
-            <TileRow key="r4" tileArray={[]} selectedRow={false}/>
-        ]
-    );
+    const [rows, setRows] = useState<JSX.Element[]>([])
+    //By default, the first row is set as selected
+    const [selectedRowIndex, setSelectedRowIndex] = useState<number>(0);
  
     useEffect(()=>{
     },[rows])
+
+    useEffect(() => {
+        //Set default TileRows
+        let rows: JSX.Element[] = [];
+        for (let i = 0; i < 5; i++) {
+            rows.push(<TileRow rowIndex={i} tileArray={[]} selectedRowIndex={selectedRowIndex} setSelectedRowIndex={setSelectedRowIndex} setRows={setRows}/>)
+        }
+        setRows(rows);
+    })
 
     return (
         <div id="game-board">
