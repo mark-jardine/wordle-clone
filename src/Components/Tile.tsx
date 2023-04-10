@@ -15,13 +15,14 @@ const Tile = ( {inputCharacter, selectedTileIndex, setTiles, tileIndex}: TilePro
         //Allow user to input a character if this tile is currently selected
         if(selectedTileIndex === tileIndex) {
             window.addEventListener('keydown', e => {
-                console.log(e);
+                console.log(e.key);
                 const key = e.key;
                 
                 //If key is a single letter
                 if(key.match("\\w") && key.length === 1){
                     //Set tile's character to the uppercase version of that key
                     setCharacter(key.toUpperCase());
+                    
                 }
                 //If user pressed backspace
                 else if(key === "Backspace"){
@@ -36,7 +37,7 @@ const Tile = ( {inputCharacter, selectedTileIndex, setTiles, tileIndex}: TilePro
                 }
             });
         }
-    }, [])
+    }, [selectedTileIndex])
 
     useEffect(() => {
         if(character){
@@ -47,7 +48,7 @@ const Tile = ( {inputCharacter, selectedTileIndex, setTiles, tileIndex}: TilePro
     }, [character])
 
     return (
-    <span id="tile" className={selectedTileIndex? "selected":""}>
+    <span id="tile" className={selectedTileIndex===tileIndex? "selected":""}>
         <input style={{"display": "none"}} onInput={e => console.log(e)}></input>
         {character}
     </span>
