@@ -14,7 +14,7 @@ const GameBoard = () =>{
         //Set default TileRows
         let rows: JSX.Element[] = [];
         for (let i = 0; i < 5; i++) {
-            rows.push(<TileRow key={i} rowIndex={i} tileArray={[]} selectedRowIndex={selectedRowIndex} setSelectedRowIndex={setSelectedRowIndex} setRows={setRows}/>)
+            rows.push(<TileRow key={i} rowIndex={i} selectedRowIndex={selectedRowIndex} setSelectedRowIndex={setSelectedRowIndex} setRows={setRows}/>)
         }
         setRows(rows);
     }

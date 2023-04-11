@@ -2,35 +2,52 @@ import { useEffect, useState } from "react";
 import Tile from './Tile';
 
 type TileRowProps = {
-    tileArray: JSX.Element[]
     selectedRowIndex: number
     setSelectedRowIndex: React.Dispatch<React.SetStateAction<number>>
     rowIndex: number
     setRows: any
 };
 
-const TileRow = ({tileArray, selectedRowIndex, setSelectedRowIndex, rowIndex, setRows}: TileRowProps) => {
+const TileRow = ({ selectedRowIndex, setSelectedRowIndex, rowIndex, setRows}: TileRowProps) => {
     const [tiles, setTiles] = useState<JSX.Element[]>([]);
     //Tile currently selected by User
-    const [selectedTileIndex, setSelectedTileIndex] = useState<number>(0);
+    const [selectedTileIndex, setSelectedTileIndex] = useState<number>(0); //By default, the first row is set as selected
 
     useEffect(() => {
-        loadTiles();
+        createTiles();
     }, [])
+
+    const createTiles = () =>{
+        let tempTiles: JSX.Element[] = [];
+        for (let i = 0; i < 5; i++) {
+            tempTiles.push(
+                <Tile key={crypto.randomUUID()} tileIndex={i} selectedTileIndex={selectedTileIndex}
+                    setSelectedTileIndex={setSelectedTileIndex} setTiles={setTiles} inSelectedRow={selectedRowIndex==rowIndex}
+                />
+             )
+        }
+        setTiles(tempTiles);
+    }
 
     const loadTiles = () =>{
         let tempTiles: JSX.Element[] = [];
         for (let i = 0; i < 5; i++) {
-            tempTiles.push(<Tile key={i} tileIndex={i} inputCharacter={''} selectedTileIndex={selectedTileIndex} setTiles={setTiles}/>)
+            tempTiles.push(
+                <Tile tileIndex={i} selectedTileIndex={selectedTileIndex}
+                    setSelectedTileIndex={setSelectedTileIndex} setTiles={setTiles} inSelectedRow={selectedRowIndex==rowIndex}
+                />
+             )
         }
-        setTiles(tempTiles);
 
-        //By default, the first row is set as selected
-        setSelectedTileIndex(0);
+        setTiles(tempTiles);
     }
 
+    useEffect( ()=>{
+        loadTiles();
+    }, [selectedTileIndex])
+
     return (
-    <div id="tile-row">
+    <div id="tile-row" className={selectedRowIndex===rowIndex? "selected":""}>
         {tiles}
     </div>
      );
